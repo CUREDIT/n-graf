@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "n-graf": {
       "projectType": "application",
@@ -10,25 +10,25 @@
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
+      "root": "apps/n-graf",
+      "sourceRoot": "apps/n-graf/src",
+      "prefix": "n-graf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/n-graf",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/n-graf",
+            "index": "apps/n-graf/src/index.html",
+            "main": "apps/n-graf/src/main.ts",
+            "polyfills": "apps/n-graf/src/polyfills.ts",
+            "tsConfig": "apps/n-graf/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/n-graf/src/favicon.ico",
+              "apps/n-graf/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/n-graf/src/styles.scss"
             ],
             "scripts": []
           },
@@ -36,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/n-graf/src/environments/environment.ts",
+                  "with": "apps/n-graf/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -84,16 +84,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "apps/n-graf/src/test.ts",
+            "polyfills": "apps/n-graf/src/polyfills.ts",
+            "tsConfig": "apps/n-graf/tsconfig.spec.json",
+            "karmaConfig": "apps/n-graf/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/n-graf/src/favicon.ico",
+              "apps/n-graf/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/n-graf/src/styles.scss"
             ],
             "scripts": []
           }
@@ -102,25 +102,39 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps/n-graf/tsconfig.app.json",
+              "apps/n-graf/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        },
+        }
+      }
+    },
+    "n-graf-e2e": {
+      "projectType": "application",
+      "root": "apps/n-graf-e2e",
+      "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "apps/n-graf-e2e/protractor.conf.js",
             "devServerTarget": "n-graf:serve"
           },
           "configurations": {
             "production": {
               "devServerTarget": "n-graf:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/n-graf-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
